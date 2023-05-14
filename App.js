@@ -1,51 +1,66 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, SafeAreaView, Button, TouchableOpacity, Pressable } from 'react-native';
 import { useState } from 'react';
 // import { Stack, useRouter } from 'expo-router';
 
 
-export default function App() {
+function App() {
 
   // const router = useRouter();
   
   return (
       <View style={styles.container}>
+
         <View style={styles.topSection}>
-          <Text style={styles.heading1}>Welcome back, John.</Text>  
+          <Text style={styles.heading1}>Welcome back, John.</Text> 
+          <View style={styles.card}>
+            <Text style={styles.heading2}>User Stats & Points</Text>  
+          </View> 
         </View>
+
         <View style={styles.mainSection}>
           <Text style={styles.heading2}>Sorting Waste</Text>  
           <Pressable style={styles.card}>
-            <Text>TAP HERE</Text>
+            <Text>Landfill</Text>
           </Pressable>
           <Pressable style={styles.card}>
-            <Text>TAP HERE</Text>
+            <Text>Recycling</Text>
           </Pressable>
           <Pressable style={styles.card}>
-            <Text>TAP HERE</Text>
+            <Text>Green Bin</Text>
           </Pressable>
         </View>
+
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
           <TouchableOpacity>
-            <Text>Icon 1</Text>
+            <Button variant="contained" title="Icon 1"></Button>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text>Icon 2</Text>
+            <Button 
+              variant="contained" title="Icon 2"></Button>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text>Icon 3</Text>
+            <Button variant="contained" title="Icon 3"></Button>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text>Icon 4</Text>
+            <Button variant="contained" title="Icon 4"></Button>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text>Icon 5</Text>
+            <Button variant="contained" title="Icon 5"></Button>
           </TouchableOpacity>
         </View>
       </View>
   );
 }
+
+function Hub() {
+  <View>
+    <Text>This is a new page!!</Text>
+  </View>
+}
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: 500
   },
   nav: {
-    flex: 1,
+    flex: 3,
     backgroundColor: '#F3F6F5',
     fontFamily: 'Inter',
     alignItems: 'center',
