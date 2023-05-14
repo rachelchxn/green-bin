@@ -25,7 +25,24 @@ export default function App() {
             <Text>TAP HERE</Text>
           </Pressable>
         </View>
-        <StatusBar style="auto" />
+        <StatusBar style="auto"></StatusBar>
+        <View style={styles.nav}>
+          <TouchableOpacity>
+            <Text>Icon 1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Icon 2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Icon 3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Icon 4</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Icon 5</Text>
+          </TouchableOpacity>
+        </View>
       </View>
   );
 }
@@ -60,5 +77,13 @@ const styles = StyleSheet.create({
   heading2: {
     fontSize: 20,
     fontWeight: 500
+  },
+  nav: {
+    flex: 1,
+    backgroundColor: '#F3F6F5',
+    fontFamily: 'Inter',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 });
