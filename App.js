@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Image, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Pressable } from 'react-native';
-import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Image, Text, View, Button, ScrollView, SafeAreaView, TouchableOpacity, Pressable } from 'react-native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { Stack, useRouter } from 'expo-router';
 
-export default App;
+const Stack = createNativeStackNavigator();
 
 function App() {
+  const navigation = useNavigation();
+
   return (
       <View style={styles.container}>
 
@@ -32,27 +34,29 @@ function App() {
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('App')}>
             <Image source={require('./assets/bl_home.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Hub')}>
             <Image source={require('./assets/light.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Camera')}>
             <Image source={require('./assets/camera.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Contact')}>
             <Image source={require('./assets/feedback.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('User')}>
             <Image source={require('./assets/user.png')}/>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
   );
 }
 
 function Hub() {
+  const navigation = useNavigation();
+
   return(
     <View style={styles.container}>
         <View style={styles.topSection}>
@@ -75,21 +79,21 @@ function Hub() {
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('App')}>
             <Image source={require('./assets/home.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Hub')}>
             <Image source={require('./assets/bl_light.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Camera')}>
             <Image source={require('./assets/camera.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Contact')}>
             <Image source={require('./assets/feedback.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('User')}>
             <Image source={require('./assets/user.png')}/>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
   )
@@ -97,6 +101,8 @@ function Hub() {
 
 
 function Camera() {
+  const navigation = useNavigation();
+
   return(
     <View style={styles.container}>
         <View style={styles.topSection2}>
@@ -105,21 +111,21 @@ function Camera() {
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('App')}>
             <Image source={require('./assets/home.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Hub')}>
             <Image source={require('./assets/light.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Camera')}>
             <Image source={require('./assets/bl_camera.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Contact')}>
             <Image source={require('./assets/feedback.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('User')}>
             <Image source={require('./assets/user.png')}/>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
   )
@@ -127,6 +133,8 @@ function Camera() {
 
 
 function Contact() {
+  const navigation = useNavigation();
+
   return(
     <View style={styles.container}>
         <View style={styles.topSection2}>
@@ -148,21 +156,21 @@ function Contact() {
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('App')}>
             <Image source={require('./assets/home.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Hub')}>
             <Image source={require('./assets/light.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Camera')}>
             <Image source={require('./assets/camera.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Contact')}>
             <Image source={require('./assets/bl_feedback.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('User')}>
             <Image source={require('./assets/user.png')}/>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
   )
@@ -170,6 +178,8 @@ function Contact() {
 
 
 function User() {
+  const navigation = useNavigation();
+
   return(
     <View style={styles.container}>
         <View style={styles.topSection}>
@@ -201,25 +211,63 @@ function User() {
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('App')}>
             <Image source={require('./assets/home.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Hub')}>
             <Image source={require('./assets/light.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Camera')}>
             <Image source={require('./assets/camera.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Contact')}>
             <Image source={require('./assets/feedback.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('User')}>
             <Image source={require('./assets/bl_user.png')}/>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
   )
 }
+
+
+const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="App"
+          component={App} 
+          options={{headerShown: false, animation: 'none'}}
+        />
+        <Stack.Screen 
+          name="Hub" 
+          component={Hub} 
+          options={{headerShown: false, animation: 'none'}}
+        />
+        <Stack.Screen 
+          name="Camera" 
+          component={Camera} 
+          options={{headerShown: false, animation: 'none'}}
+        />
+        <Stack.Screen 
+          name="Contact" 
+          component={Contact} 
+          options={{headerShown: false, animation: 'none'}}
+        />
+        <Stack.Screen 
+          name="User" 
+          component={User} 
+          options={{headerShown: false, animation: 'none'}}
+        />       
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+
+export default MyStack;
 
 
 const styles = StyleSheet.create({
