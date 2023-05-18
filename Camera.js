@@ -40,9 +40,11 @@ export default function CameraScreen() {
       <Camera style={styles.camera} type={type}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
+            <Image style={styles.flip} source={require('./assets/flip-camera.png')}/>
           </TouchableOpacity>
         </View>
+        <Image style={styles.frame} source={require('./assets/frame.png')}/>
+        <Text style={styles.heading1}>Scan your item to identify where it belongs</Text>
       </Camera>
       <View style={styles.nav}>
         <Pressable onPress={() => navigation.navigate('Home')}>
@@ -70,21 +72,41 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  heading1: {
+    fontSize: 16,
+    fontWeight: 500,
+    color: '#fff',
+    position: 'absolute',
+    bottom: 140,
+    textAlign: 'center',
+    alignSelf: 'center',
+    
+  },
   camera: {
     flex: 1,
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 100,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
+    top: 60,
+    right: 20,
+    width: 70,
+    height: 50,
   },
   button: {
     backgroundColor: 'rgba(0,0,0,0.7)',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 20,
+    borderRadius: 4,
+    alignItems: 'center',
+  },
+  flip: {
+    width: 36,
+    resizeMode: 'contain'
+  },
+  frame: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '12%',
+    width: '80%',
+    resizeMode: 'contain'
   },
   text: {
     fontSize: 18,
@@ -107,59 +129,12 @@ const styles = StyleSheet.create({
   icon: {
     width: 44,
     height: 44,
-    resizeMode: 'fill',
+    resizeMode: 'contain',
     opacity: 0.25,
   },
   iconCurrent: {
     width: 44,
     height: 44,
-    resizeMode: 'fill',
+    resizeMode: 'contain',
   },
 });
-
-
-// export default Camera
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#F3F6F5',
-//   },
-//   topSection: {
-//     backgroundColor: '#216D60',
-//     paddingTop: 80,
-//     padding: 20
-//   },
-//   topSection2: {
-//     paddingTop: 80,
-//     padding: 20
-//   },
-//   mainSection: {
-//     padding: 20
-//   },
-//   card: {
-//     backgroundColor: '#fff',
-//     padding: 20,
-//     borderColor: '#D9E4E0',
-//     borderWidth: 1,
-//     borderRadius: 4,
-//     marginTop: 20
-//   },
-//   heading1: {
-//     fontSize: 32,
-//     color: '#fff',
-//     fontWeight: 600
-//   },
-//   heading2: {
-//     fontSize: 20,
-//     fontWeight: 500
-//   },
-//   heading3: {
-//     fontSize: 16,
-//     fontWeight: 700
-//   },
-//   body: {
-//     fontSize: 16,
-//     fontWeight: 400
-//   },
-// });

@@ -3,6 +3,43 @@ import { StyleSheet, Image, Text, View, Button, ScrollView, SafeAreaView, Toucha
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+const articles = [
+  {
+    id: 1,
+    imageSource: require('./assets/news.png'),
+    title: 'Sustainable Habits for a Greener Future',
+    description: 'Discover the power of small changes in creating a sustainable future.',
+  },
+  {
+    id: 2,
+    imageSource: require('./assets/reduce.jpg'),
+    title: 'Top Tips for Reducing Waste',
+    description: 'Learn how to reduce waste and make a positive impact on the environment.',
+  },
+  {
+    id: 3,
+    imageSource: require('./assets/recycle.jpg'),
+    title: 'The Importance of Recycling: Protecting Our Planet',
+    description: 'Explore the significance of recycling and its role in protecting the environment.',
+  },
+  {
+    id: 4,
+    imageSource: require('./assets/compost.jpg'),
+    title: 'The Benefits of Composting: Turning Waste into Nutrient-Rich Soil',
+    description: 'Discover the advantages of composting and how it contributes to a more sustainable ecosystem.',
+  },
+];
+
+const ArticleCard = ({ imageSource, title, description }) => {
+  return (
+    <Pressable style={styles.card}>
+      <Image style={styles.articleImg} source={imageSource} />
+      <Text style={styles.heading3}>{title}</Text>
+      <Text style={styles.desc}>{description}</Text>
+    </Pressable>
+  );
+};
+
 function Hub() {
   const navigation = useNavigation();
 
@@ -11,20 +48,24 @@ function Hub() {
         <View style={styles.topSection}>
           <Text style={styles.heading1}>Info Hub</Text> 
           <View style={styles.card}>
-            <Text style={styles.heading3}>Quick Links</Text>
-            <Text>Topic 1</Text>
-            <Text>Topic 2</Text>
-            <Text>Topic 3</Text>
+            <Text style={styles.heading2}>Quick Links</Text>
+            <Text style={styles.heading3}>Eco-friendly Initiatives at Western</Text>
+            <Text style={styles.heading3}>Sustainability Resources Available to Students</Text>
+            <Text style={styles.heading3}>How to get involved</Text>
           </View> 
         </View>
 
-        <View style={styles.mainSection}>
-          <Text style={styles.heading2}>Articles</Text>  
-          <Pressable style={styles.card}>
-            <Image source={require('./assets/news.png')}/>
-            <Text>Article Name</Text>
-          </Pressable>
-        </View>
+        <ScrollView style={styles.mainSection}>
+        <Text style={styles.heading2}>Articles</Text>
+          {articles.map((article) => (
+            <ArticleCard
+              key={article.id}
+              imageSource={article.imageSource}
+              title={article.title}
+              description={article.description}
+            />
+          ))}
+        </ScrollView>
 
         <StatusBar style="auto"></StatusBar>
         <View style={styles.nav}>
@@ -66,7 +107,10 @@ const styles = StyleSheet.create({
     padding: 20
   },
   mainSection: {
-    padding: 20
+    paddingHorizontal: 20,
+    paddingBottom: 40, 
+    paddingTop: 20,
+    marginBottom: 100
   },
   card: {
     backgroundColor: '#fff',
@@ -76,6 +120,16 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginTop: 20
   },
+  articleImg: {
+    width: '100%',
+    height: 150,
+    marginBottom: 5
+  },
+  desc:{
+    fontSize: 16,
+    opacity: 0.5,
+    marginTop: 10
+  },
   heading1: {
     fontSize: 32,
     color: '#fff',
@@ -83,11 +137,13 @@ const styles = StyleSheet.create({
   },
   heading2: {
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: 500,
+    marginBottom: 5
   },
   heading3: {
     fontSize: 16,
-    fontWeight: 700
+    fontWeight: 500,
+    marginTop: 15,
   },
   body: {
     fontSize: 16,
@@ -101,7 +157,7 @@ const styles = StyleSheet.create({
     height: 100,
     paddingHorizontal: 8,
     paddingTop: 12,
-    backgroundColor: '#F3F6F5',
+    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderTopColor: '#D9E4E0',
