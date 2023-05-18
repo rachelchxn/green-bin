@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     paddingHorizontal: 8,
-    paddingTop: 12,
+    paddingTop: 16,
     backgroundColor: '#F3F6F5',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -127,14 +127,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   icon: {
-    width: 44,
-    height: 44,
+    width: 36,
+    height: 36,
     resizeMode: 'contain',
     opacity: 0.25,
   },
   iconCurrent: {
-    width: 44,
-    height: 44,
+    width: 36,
+    height: 36,
     resizeMode: 'contain',
   },
 });

@@ -47,11 +47,11 @@ function Hub() {
     <View style={styles.container}>
         <View style={styles.topSection}>
           <Text style={styles.heading1}>Info Hub</Text> 
-          <View style={styles.card}>
-            <Text style={styles.heading2}>Quick Links</Text>
-            <Text style={styles.heading3}>Eco-friendly Initiatives at Western</Text>
-            <Text style={styles.heading3}>Sustainability Resources Available to Students</Text>
-            <Text style={styles.heading3}>How to get involved</Text>
+          <View style={styles.quickLinks}>
+            <Text style={[styles.heading4, styles.white]}>QUICK LINKS</Text>
+            <Text style={[styles.heading3, styles.white]}>Eco-friendly Initiatives at Western</Text>
+            <Text style={[styles.heading3, styles.white]}>Sustainability Resources Available to Students</Text>
+            <Text style={[styles.heading3, styles.white]}>How to get involved</Text>
           </View> 
         </View>
 
@@ -120,6 +120,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginTop: 20
   },
+  quickLinks: {
+    backgroundColor: '#236155',
+    padding: 20,
+    borderColor: '#D9E4E0',
+    marginTop: 15,
+    color: '#fff',
+    borderRadius: 4
+  },
   articleImg: {
     width: '100%',
     height: 150,
@@ -130,8 +138,11 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     marginTop: 10
   },
+  white: {
+    color: '#fff',
+  },
   heading1: {
-    fontSize: 32,
+    fontSize: 28,
     color: '#fff',
     fontWeight: 600
   },
@@ -145,6 +156,10 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     marginTop: 15,
   },
+  heading4: {
+    letterSpacing: 2,
+    opacity: 0.7
+  },
   body: {
     fontSize: 16,
     fontWeight: 400
@@ -156,22 +171,22 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     paddingHorizontal: 8,
-    paddingTop: 12,
-    backgroundColor: '#fff',
+    paddingTop: 16,
+    backgroundColor: '#F3F6F5',
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderTopColor: '#D9E4E0',
     borderTopWidth: 1,
   },
   icon: {
-    width: 44,
-    height: 44,
-    resizeMode: 'fill',
+    width: 36,
+    height: 36,
+    resizeMode: 'contain',
     opacity: 0.25,
   },
   iconCurrent: {
-    width: 44,
-    height: 44,
-    resizeMode: 'fill',
+    width: 36,
+    height: 36,
+    resizeMode: 'contain',
   },
 });

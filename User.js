@@ -8,28 +8,27 @@ function User() {
 
   return(
     <View style={styles.container}>
-        <View style={styles.topSection}>
-          <View style={styles.card}>
-            <Text style={styles.heading3}>John Doe</Text>
-            <Text>Points: 400</Text>
-            <Pressable style={styles.card}>
-              <Text>Redeem Points</Text>
-          </Pressable>
-          </View> 
-        </View>
-
         <View style={styles.mainSection}>
           <View style={styles.card}>
-            <Text style={styles.heading2}>Profile</Text>
-            <Text>Email:</Text>
-            <Text>john@doe.com</Text>
-            <Text>Phone Number:</Text>
-            <Text>(123) 456-7890</Text>
-            <Text>Residence:</Text>
-            <Text>Ontario Hall</Text>
-            <Text>Language:</Text>
-            <Text>English</Text>
-            <Pressable style={styles.card}>
+            <View style={styles.profile}>
+              <Image style={styles.pfp} source={require('./assets/pfp.png')}/>
+              <View>
+                <Text style={styles.heading2}>John Doe</Text>
+                <Text style={styles.heading3}>Points: 700/1000</Text>
+              </View>
+            </View>
+        </View>
+          <View style={styles.card}>
+            <Text style={[styles.heading2, styles.center]}>Profile</Text>
+            <Text style={styles.heading3}>Email:</Text>
+            <Text style={styles.body}>john@doe.com</Text>
+            <Text style={styles.heading3}>Phone Number:</Text>
+            <Text style={styles.body}>(123) 456-7890</Text>
+            <Text style={styles.heading3}>Residence:</Text>
+            <Text style={styles.body}>Ontario Hall</Text>
+            <Text style={styles.heading3}>Language:</Text>
+            <Text style={styles.body}>English</Text>
+            <Pressable style={styles.button}>
                 <Text>Edit Profile</Text>
             </Pressable>
           </View>
@@ -65,17 +64,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F3F6F5',
   },
-  topSection: {
-    backgroundColor: '#216D60',
-    paddingTop: 80,
-    padding: 20
-  },
-  topSection2: {
-    paddingTop: 80,
-    padding: 20
+  profile: {
+    display: 'flex'
   },
   mainSection: {
-    padding: 20
+    paddingHorizontal: 20,
+    paddingTop: 60
+  },
+  profile: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  pfp: {
+    width: 60,
+    height: 60,
+    resizeMode: 'contain',
+    marginRight: 16
   },
   card: {
     backgroundColor: '#fff',
@@ -92,15 +97,31 @@ const styles = StyleSheet.create({
   },
   heading2: {
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: 500,
+    marginBottom: 4
   },
   heading3: {
     fontSize: 16,
-    fontWeight: 700
+    fontWeight: 700,
+    opacity: 0.4,
+    marginTop: 6
+  },
+  center: {
+    textAlign: 'center'
   },
   body: {
     fontSize: 16,
-    fontWeight: 400
+    fontWeight: 400,
+    marginTop: 4,
+    marginBottom: 12
+  },
+  button: {
+    alignItems: 'center',
+    paddingVertical: 12,
+    width: '100%',
+    backgroundColor: '#F3F6F5',
+    borderRadius: 4,
+    marginTop: 20
   },
   nav: {
     position: 'absolute',
@@ -109,7 +130,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     paddingHorizontal: 8,
-    paddingTop: 12,
+    paddingTop: 16,
     backgroundColor: '#F3F6F5',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -117,14 +138,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   icon: {
-    width: 44,
-    height: 44,
-    resizeMode: 'fill',
+    width: 36,
+    height: 36,
+    resizeMode: 'contain',
     opacity: 0.25,
   },
   iconCurrent: {
-    width: 44,
-    height: 44,
-    resizeMode: 'fill',
+    width: 36,
+    height: 36,
+    resizeMode: 'contain',
   },
 });
