@@ -1,10 +1,15 @@
 import { Camera } from 'expo-camera';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button, Pressable, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import axios from 'axios';
+
 export default function CameraScreen() {
+
+  const cameraRef = useRef(null);
+
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [permission, setPermission] = useState(null);
 
@@ -33,17 +38,54 @@ export default function CameraScreen() {
     );
   }
 
+  function captureImage() {
+    if(cameraRef.current) {
+      cameraRef.current.takePictureAsync({ onPictureSaved: savePic })
+      console.log("f1 works")
+      }
+    }
+  
+  async function savePic(photo) {
+    const imageUri = photo.uri;
+    console.log("f2 works")
+    processImage(imageUri);
+  }
+  
+  async function processImage(imageUri) {
+    const formData = new FormData()
+    formData.append('image', {
+      uri: imageUri,
+      name: 'capturedImage.jpg',
+      type: 'image/jpeg',
+    });
+    console.log("sending form data")
+    console.log(formData)
+    const response = await axios.post('http://127.0.0.1:8000/process_image', formData)
+      .then(response => {
+        console.log(response.data.message);
+      })
+      .catch(error => {
+        console.log(error);
+      });    
+    console.log('f3 works')
+  }  
+
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
+      <Camera style={styles.camera} type={type} ref={cameraRef}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
             <Image style={styles.flip} source={require('./assets/flip-camera.png')}/>
           </TouchableOpacity>
         </View>
         <Image style={styles.frame} source={require('./assets/frame.png')}/>
+        <View style = {styles.captureContainer}>
+          <TouchableOpacity style={styles.button} onPress={captureImage}>
+            <Image style={styles.flip} source={require('./assets/whitecircle.png')}/>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.heading1}>Scan your item to identify where it belongs</Text>
       </Camera>
       <View style={styles.nav}>
@@ -91,6 +133,17 @@ const styles = StyleSheet.create({
     right: 20,
     width: 70,
     height: 50,
+  },
+  captureContainer: {
+    position: 'absolute',
+    top: 620,
+    right: 160,
+    width: 70,
+    height: 50,
+  },
+  capture: {
+    width: 36,
+    resizeMode: 'contain'
   },
   button: {
     backgroundColor: 'rgba(0,0,0,0.7)',
